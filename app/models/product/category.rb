@@ -2,7 +2,6 @@ require 'stringex'
 
 module Product
   class Category < ActiveRecord::Base
-
     attr_accessible                   :image,
                                       :order,
                                       :text,
@@ -16,10 +15,10 @@ module Product
 
     has_attached_file                 :image,
                                       :styles => {
-                                        :large => ["500x500#", :png],
-                                        :small => ["250x250#", :png],
-                                        :nav_thumb => ["86x119#", :png],
-                                        :thumb => ["70x70#", :png]
+                                        :large => ["500x500>", :png],
+                                        :small => ["250x250>", :png],
+                                        :nav_thumb => ["86x119>", :png],
+                                        :thumb => ["70x70>", :png]
                                       }
 
     validates_presence_of             :order,
@@ -40,6 +39,5 @@ module Product
     def to_s
       name
     end
-
   end
 end

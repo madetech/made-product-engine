@@ -22,9 +22,9 @@ module Product
 
     has_attached_file               :image,
                                     :styles => {
-                                      :large => ["500x500#", :jpg],
-                                      :small => ["250x250#", :jpg],
-                                      :thumb => ["70x70#", :jpg]
+                                      :large => ["500x500>", :jpg],
+                                      :small => ["250x250>", :jpg],
+                                      :thumb => ["70x70>", :jpg]
                                     }
 
     validates_presence_of           :order,
