@@ -19,12 +19,11 @@ module Product
                                     :name,
                                     :category_ids
 
-
     has_attached_file               :image,
                                     :styles => {
-                                      :large => ["500x500>", :jpg],
-                                      :small => ["250x250>", :jpg],
-                                      :thumb => ["70x70>", :jpg]
+                                      :large => ["325x400", :jpg],
+                                      :small => ["115x142", :jpg],
+                                      :thumb => ["70x70", :jpg]
                                     }
 
     validates_presence_of           :order,
@@ -37,8 +36,13 @@ module Product
 
     default_scope                   :order => '`order` ASC'
 
-    def in_category(category_slug)
+    def self.get_products_in_category(category)
+      categorisations = Product::Categorisation.where(:category_id => category.id)
+      item_ids = categorisations.map {|x| x.item_id}
+      self.find(item_ids)
+    end
 
+    def in_category(category_slug)
       begin
         category = Category.find_by_url!(category_slug)
       rescue => error
@@ -59,6 +63,5 @@ module Product
     def to_s
       name
     end
-
   end
 end

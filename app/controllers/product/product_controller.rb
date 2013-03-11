@@ -8,6 +8,7 @@ module Product
 
     def products_by_category
       @category = Product.config.product_category_class.find_by_url!(params[:category])
+      @products = Product.config.product_item_class.get_products_in_category(@category)
     end
 
     def product_item
