@@ -3,7 +3,7 @@ module Product
     layout 'application'
 
     def index
-      @categories = Category.with_items
+      @categories = Product.config.product_category_class.with_items
     end
 
     def products_by_category

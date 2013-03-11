@@ -21,7 +21,7 @@ module Product
 
     has_attached_file               :image,
                                     :styles => {
-                                      :large => ["325x400", :png],
+                                      :large => ["325x400>", :png],
                                       :small => ["115x142", :png],
                                       :thumb => ["70x70", :png]
                                     }
