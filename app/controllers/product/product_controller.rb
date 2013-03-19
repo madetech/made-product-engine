@@ -16,7 +16,6 @@ module Product
       @product = Product.config.product_item_class.find_by_url!(params[:product])
 
       raise ActiveRecord::RecordNotFound.new('Page not found') if !@product.in_category(params[:category])
-      raise ActiveRecord::RecordNotFound.new('Page not found') if @product.blank?
     end
   end
 end
