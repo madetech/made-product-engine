@@ -33,6 +33,5 @@ module Product
     it "return the category name as a string" do
       @category.name.instance_of?(String)
     end
-
   end
 end
