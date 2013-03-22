@@ -10,12 +10,6 @@ module Product
   mattr_accessor :engine_routing
   @@engine_routing = false
 
-  mattr_accessor :product_category_class
-  @@product_category_class = false
-
-  mattr_accessor :product_item_class
-  @@product_item_class = false
-
   class Engine < Rails::Engine
     isolate_namespace Product
 
