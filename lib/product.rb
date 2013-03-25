@@ -10,6 +10,9 @@ module Product
   mattr_accessor :engine_routing
   @@engine_routing = false
 
+  mattr_accessor :engine_active_admin
+  @@engine_active_admin = true
+
   class Engine < Rails::Engine
     isolate_namespace Product
 
