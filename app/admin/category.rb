@@ -28,7 +28,7 @@ if defined?(ActiveAdmin) and Product.config.engine_active_admin
         f.input     :order
       end
 
-      f.buttons
+      f.actions
     end
 
     index do
@@ -38,6 +38,5 @@ if defined?(ActiveAdmin) and Product.config.engine_active_admin
 
       default_actions
     end
-
   end
 end
