@@ -12,6 +12,8 @@ module Product
     has_many                        :categories, :through => :categorisations
     accepts_nested_attributes_for   :categorisations, :allow_destroy => true
 
+    after_destroy                   :remove_associations
+
     attr_accessible                 :image,
                                     :order,
                                     :text,
@@ -62,6 +64,11 @@ module Product
 
     def to_s
       name
+    end
+
+    private
+    def remove_associations
+      Product::Categorisation.destroy_old_assocaitions('item', self.id)
     end
   end
 end

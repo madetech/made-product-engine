@@ -11,7 +11,9 @@ module Product
 
     has_many                          :categorisations
     has_many                          :items, :through => :categorisations
-    accepts_nested_attributes_for     :categorisations
+    accepts_nested_attributes_for     :categorisations, :allow_destroy => true
+
+    after_destroy                     :remove_associations
 
     has_attached_file                 :image,
                                       :styles => {
@@ -39,6 +41,11 @@ module Product
 
     def to_s
       name
+    end
+
+    private
+    def remove_associations
+      Product::Categorisation.destroy_old_assocaitions('category', self.id)
     end
   end
 end

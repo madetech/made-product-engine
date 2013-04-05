@@ -10,6 +10,9 @@ module Product
     def to_s
       self.category
     end
-  end
 
+    def self.destroy_old_assocaitions(field, id)
+      where("#{field}_id = ?", id).destroy_all
+    end
+  end
 end
