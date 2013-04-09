@@ -12,6 +12,10 @@ module Product
     has_many                        :categories, :through => :categorisations
     accepts_nested_attributes_for   :categorisations, :allow_destroy => true
 
+    has_many                        :stockists, :dependent => :destroy
+    has_many                        :retailers, :through => :stockists
+    accepts_nested_attributes_for   :stockists, :allow_destroy => true
+
     after_destroy                   :remove_associations
 
     attr_accessible                 :image,
@@ -19,7 +23,8 @@ module Product
                                     :text,
                                     :url,
                                     :name,
-                                    :category_ids
+                                    :category_ids,
+                                    :retailer_ids
 
     has_attached_file               :image,
                                     :styles => {

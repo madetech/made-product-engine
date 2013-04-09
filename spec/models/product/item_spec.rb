@@ -34,6 +34,10 @@ module Product
       new_item = FactoryGirl.create(:item_with_categories, :name => "Item with Category")
     end
 
+    it "can create a product with a retailer" do
+      new_item = FactoryGirl.create(:item_with_retailers, :name => "Item with Retailer")
+    end
+
     it "returns the name as a string" do
       @item.name.instance_of?(String)
     end

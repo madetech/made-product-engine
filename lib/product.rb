@@ -7,11 +7,17 @@ module Product
   mattr_accessor :product_category_sweeper
   @@product_category_sweeper = false
 
+  mattr_accessor :product_retailer_sweeper
+  @@product_retailer_sweeper = false
+
   mattr_accessor :engine_routing
   @@engine_routing = false
 
   mattr_accessor :engine_active_admin
   @@engine_active_admin = true
+
+  mattr_accessor :show_product_stockists
+  @@show_product_stockists = false
 
   class Engine < Rails::Engine
     isolate_namespace Product

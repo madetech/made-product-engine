@@ -34,6 +34,15 @@ if defined?(ActiveAdmin) and Product.config.engine_active_admin
         f.input     :order
       end
 
+      if Product.config.show_product_stockists
+        f.inputs "Stockists" do
+          f.input     :retailers,
+                      :label => 'Retailers',
+                      :as => :check_boxes,
+                      :multiple => true
+        end
+      end
+
       f.actions
     end
 

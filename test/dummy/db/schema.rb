@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121153853) do
+ActiveRecord::Schema.define(:version => 20130409103007) do
 
   create_table "product_categories", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,12 @@ ActiveRecord::Schema.define(:version => 20130121153853) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "type"
   end
+
+  add_index "product_categories", ["name"], :name => "index_product_categories_on_name"
+  add_index "product_categories", ["order"], :name => "index_product_categories_on_order"
+  add_index "product_categories", ["url"], :name => "index_product_categories_on_url"
 
   create_table "product_categorisations", :force => true do |t|
     t.integer  "item_id"
@@ -32,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20130121153853) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "product_categorisations", ["category_id"], :name => "index_product_categorisations_on_category_id"
 
   create_table "product_items", :force => true do |t|
     t.string   "name"
@@ -44,6 +51,29 @@ ActiveRecord::Schema.define(:version => 20130121153853) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "type"
+  end
+
+  add_index "product_items", ["order"], :name => "index_product_items_on_order"
+  add_index "product_items", ["url"], :name => "index_product_items_on_url"
+
+  create_table "product_retailers", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "order",              :default => 9999
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "product_stockists", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "retailer_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end
