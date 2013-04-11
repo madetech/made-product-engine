@@ -73,7 +73,7 @@ module Product
 
     private
     def remove_associations
-      Product::Categorisation.destroy_old_assocaitions('item', self.id)
+      Product::Categorisation.destroy_old_associations('item', self.id)
     end
   end
 end

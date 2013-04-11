@@ -45,7 +45,7 @@ module Product
 
     private
     def remove_associations
-      Product::Categorisation.destroy_old_assocaitions('category', self.id)
+      Product::Categorisation.destroy_old_associations('category', self.id)
     end
   end
 end
