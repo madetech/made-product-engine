@@ -11,10 +11,7 @@ module Product
     accepts_nested_attributes_for     :stockists, :allow_destroy => true
 
     has_attached_file                 :image,
-                                      :styles => {
-                                        :icon =>  ["20x20", :png],
-                                        :thumb => ["70x70", :png]
-                                      }
+                                      :styles => Product.config.retailer_image_styles
 
     validates_presence_of             :order,
                                       :url,

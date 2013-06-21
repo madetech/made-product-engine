@@ -19,6 +19,9 @@ module Product
   mattr_accessor :show_product_stockists
   @@show_product_stockists = false
 
+  mattr_accessor :retailer_image_styles
+  @@retailer_image_styles = false
+
   class Engine < Rails::Engine
     isolate_namespace Product
 
