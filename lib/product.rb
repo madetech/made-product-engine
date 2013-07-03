@@ -22,6 +22,12 @@ module Product
   mattr_accessor :retailer_image_styles
   @@retailer_image_styles = false
 
+  mattr_accessor :item_image_styles
+  @@item_image_styles = false
+
+  mattr_accessor :category_image_styles
+  @@category_image_styles = false
+
   class Engine < Rails::Engine
     isolate_namespace Product
 

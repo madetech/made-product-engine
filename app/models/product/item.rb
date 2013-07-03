@@ -27,11 +27,7 @@ module Product
                                     :retailer_ids
 
     has_attached_file               :image,
-                                    :styles => {
-                                      :large => ["325x400>", :png],
-                                      :small => ["115x142", :png],
-                                      :thumb => ["70x70", :png]
-                                    }
+                                    :styles => Product.config.item_image_styles
 
     validates_presence_of           :order,
                                     :text,
