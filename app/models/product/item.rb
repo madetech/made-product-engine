@@ -12,8 +12,12 @@ module Product
     has_many                        :categories, :through => :categorisations
     accepts_nested_attributes_for   :categorisations, :allow_destroy => true
 
-    has_many                        :stockists, :dependent => :destroy
-    has_many                        :retailers, :through => :stockists
+    has_many                        :stockists,
+                                      :include => :retailer,
+                                      :dependent => :destroy
+    has_many                        :retailers,
+                                      :order => '`product_retailers`.`order` ASC',
+                                      :through => :stockists
     accepts_nested_attributes_for   :stockists, :allow_destroy => true
 
     after_destroy                   :remove_associations
